@@ -29,7 +29,7 @@ const NoteUpdatePage = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    e.preventDefault()
+    
     if (!window.confirm("Are you sure you want to delete this note?")) {
       return;
     } else {
@@ -53,11 +53,11 @@ const NoteUpdatePage = () => {
     setSaving(true);
     try {
       await api.put(`/notes/${id}`, note);
-      toast.success("Note Created Successfully!");
+      toast.success("Note Updated Successfully!");
       navigate("/");
     } catch (error) {
       if (error.response.status === 429) {
-        toast.error("Slow down! You're creating notes too fast", {
+        toast.error("Slow down! You're updating notes too fast", {
           duration: 4000,
         });
       } else {
